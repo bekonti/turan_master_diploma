@@ -5,7 +5,11 @@ Accept: application/json
 
 ###
 
-GET http://127.0.0.1:8000/hello/User
+POST http://127.0.0.1:8000/generate
 Accept: application/json
+Content-Type: application/json
 
+{
+    "text": "Almaty College of Economics and Law is one of the most prestigious educational institutions in the Republic of Kazakhstan, training specialists in legal and business structures. The college was founded in 1996. We are the winners in the 2006 management and education system competition. Our teachers constantly update the curriculum and successfully implement the current state program. All modern requirements are met, and cultural and recreational events are held to give students the opportunity to relax and unwind. A wide range of specialties allows everyone to find a profession they love. List of specializations: Law, Management, Finance, Accounting and Auditing, Computer Engineering, and Software. For more engaging and active knowledge reinforcement, we organize subject Olympiads and competitions, hold mentor hours, quizzes, KVN, and much more. Our mentors and experienced students have established a “Young Teacher” club, where anyone interested can take on the role of a teacher within our institution, learn how to organize and conduct lessons, handle critical situations correctly, and much more.Upon graduation, students receive a state-recognized diploma. You will be able to continue your education in higher educational institutions both in our country and abroad. Our graduates always find good job opportunities thanks to the job fair held at our institution. Annually, over 300 participants secure employment after the job fair. To apply to our institution, you need to pass the entrance exams under general admission requirements. If you apply after graduating from the 11th grade, a certificate for passing the UNT (Unified National Testing) is not mandatory. We look forward to receiving your documents at our highly qualified educational institution and hope that studying at our college will provide you with the necessary knowledge and help in your future life."
+}
 ###

@@ -1,12 +1,7 @@
 you can use two ways start with docker if you have or start with your python
-Way 1 Docker
-1st command
-    docker build -t my-app .
-2nd command
-    docker run -p 8000:8000 my-app
-
-Way 2 Python:
+Way 1 Python:
 before download activate your virtual env for python or you can continue it in your machine python
+we need Python 3.9
 
 before start, download all packages from requirements.txt
 ```
@@ -17,3 +12,8 @@ to start run on terminal
 ```
     uvicorn main:app --reload
 ```
+Way 2 Docker
+1st command
+    docker build -t my-app .
+2nd command
+    docker run -p 8000:8000 my-app
