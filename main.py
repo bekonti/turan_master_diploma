@@ -32,15 +32,13 @@ async def say_hello(request: Request):
         raise HTTPException(status_code=400, detail="No text provided")
     request_body = await request.json()  # Parse the JSON body
     text = request_body.get("text", None)
+    lang = request_body.get("lang", None)
+    if lang != "en":
+        text = translate_text(text, src_lang=lang, dest_lang="en")
+
     fromModel = models.model_bart.run(text)
     translated_text = translate_text(fromModel, src_lang="en", dest_lang="ru")
-    if "Алматский" in translated_text:
-        translated_text = translated_text.replace("Алматский", "Алматинский")
-    if "Альмати" in translated_text:
-        translated_text = translated_text.replace("Альмати", "Алматинский")
-    # if "." in translated_text:
-    #     translated_text = translated_text.replace("Альмати", "Алматинский")
-    print("Translated to English:", translated_text)
+    translated_text = await after_generation_format_text(translated_text)
 
     # models.model_summarizer.run(text)
     # models.model_sumy.run(text)
@@ -57,3 +55,11 @@ def translate_text(text, src_lang, dest_lang):
         return translation.text
     except Exception as e:
         return f"Error: {e}"
+
+
+async def after_generation_format_text(translated_text):
+    if "Алматский" in translated_text:
+        translated_text = translated_text.replace("Алматский", "Алматинский")
+    if "Альмати" in translated_text:
+        translated_text = translated_text.replace("Альмати", "Алматинский")
+    return translated_text
